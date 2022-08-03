@@ -3,7 +3,7 @@ package com.company;
 import java.util.Arrays;
 
 // T.C = O(n^2)
-// S.C = O(n)
+// S.C = O(1)
 public class Main {
 
     static void swap(int[] arr, int x, int y){

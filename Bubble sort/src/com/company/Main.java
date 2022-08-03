@@ -3,7 +3,7 @@ package com.company;
 import java.util.Arrays;
 
 // Time complexity = O(n^2) 
-// S.c = O(n)
+// S.c = O(1)
 public class Main {
 
     static void bubbleSort(int[] arr) {

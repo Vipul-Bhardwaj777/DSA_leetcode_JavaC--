@@ -1,6 +1,14 @@
 class Solution {
 public:
     bool isPowerOfFour(int n) {
-        return fmod(log10(n)/log10(4),1)==0;
+        if(n==0)return false;
+        while (n%4==0)
+            {
+            n/=4;
+            
+            }
+        
+            return n==1;
+        
     }
 };

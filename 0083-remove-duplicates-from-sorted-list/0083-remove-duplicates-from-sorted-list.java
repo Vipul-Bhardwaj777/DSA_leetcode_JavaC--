@@ -9,22 +9,24 @@
  * }
  */
 class Solution {
-    public ListNode deleteDuplicates(ListNode node) {
+    public ListNode deleteDuplicates(ListNode head) {
         
-        if(node == null) return node;
+        ListNode node = head; // head is node pointer pointing head so create node pointer and change LL
         
-        ListNode temp = node;
+        if(node == null) return node; // if LL is empty
         
-        while(node.next != null){
-            if(node.val == node.next.val){
+          while(node.next != null){
+              
+            if(node.val == node.next.val){          // if duplicate is there skip it
+                
                 node.next = node.next.next;
             }
             
             else{
-               node = node.next;
+               node = node.next;       // if no duplicate move forward
             }
         }
         
-        return temp;
+        return head;   // return the head pointer after changing LL
     }
 }

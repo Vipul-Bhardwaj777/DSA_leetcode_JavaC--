@@ -1,12 +1,30 @@
 class Solution {
+    
+      public int Bis( int[] arr, int target  ){
+          
+          int s = 0, e = arr.length - 1;
+          
+       while(s<=e){   int mid = s + (e - s)/2;
+          
+          if( arr[mid] == target) return mid;
+          
+          else if( arr[mid] > target) e = mid - 1;
+          
+          else{ 
+              
+              s = mid + 1; }
+                   }
+          
+          return -1;
+          
+      }
+    
     public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
         
-        // O(n^2)
+        // Binary Search O(nlogn)
         
         int sa=0, sb=0;
-        
-        int[] ans = new int[2];
-        
+             
         // Find sum of both the arrays
         for(int i: aliceSizes){
             sa+=i;
@@ -16,22 +34,17 @@ class Solution {
             sb+=i;
         }
         
+        int diff = (sa - sb)/2;
         
-        for(int i = aliceSizes.length-1; i>=0; i--){
-            for(int j= bobSizes.length-1 ; j>=0; j--){
-                
-                // sa - diff = sb + diff means it's a fair candy swap
-                
-                int diff = aliceSizes[i] - bobSizes[j]; 
-                
-                if(sa - diff == sb + diff){
-                    ans[0] = aliceSizes[i];
-                    ans[1] = bobSizes[j];
-                    return ans;
-                }
-            }
+        Arrays.sort(aliceSizes);
+        
+        for( int x : bobSizes){
+            
+            if(Bis(aliceSizes, x + diff) != -1) return new int[] {x+ diff, x};
         }
         
         return new int[] {};
+        
+        
     }
 }

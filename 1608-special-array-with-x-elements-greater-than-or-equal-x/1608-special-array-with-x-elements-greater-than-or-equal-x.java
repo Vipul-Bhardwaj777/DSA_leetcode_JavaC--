@@ -1,30 +1,24 @@
 class Solution {
     public int specialArray(int[] nums) {
-        
-        
-        
-      if (nums.length == 1 && nums[0] > 0) {
-            return 1;
-        }
-        int start = 0, end = nums.length;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            int countG = 0;
-            //count how many elements are greater or equal to the current element
-            for (int i : nums) {
-                if (i >= mid) {
-                    countG++;
+        Arrays.sort(nums);
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        // binary search to find the first position that
+        // nums[i] >= len - i and nums[i - 1] < len - i
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] >= len - mid) {
+                // treat index 0 to avoid IndexOutOfBoundError
+                if (mid == 0 || nums[mid - 1] < len - mid) { // correct index
+                    return len - mid;
+                } else { // not the first position, shrink right bound
+                    right = mid - 1;
                 }
-            }
-            if (countG > mid) {
-                start = mid + 1;
-            } else if (countG < mid) {
-                end = mid - 1;
-            } else {
-                return mid;
+            } else { // otherwisem, shrink the left bound to increase nums[mid]
+                left = mid + 1;
             }
         }
         return -1;
     }
-        
-    }
+}

@@ -20,13 +20,13 @@
        
        Step 2 -
        
-        0 1 2  Now check which idx is first detected to be having wrong element
+        0 1 2  Now check which idx is first detected to be having wrong element (Search from the last idx)
        [0,1,3] 
        
        index 2 contains wrong element so 2 is the ans
        
        Special case -
-       When the n is missing eg- [2,0,1] here n = 3 so the above algo will not find any idx with wrong element [o,1,2]
+       When the n is missing eg- [2,0,1] here n = 3 so the above algo will not find any idx with wrong element [0,1,2]
        But we know 3 is missing so just return n in such case
         
         
@@ -65,7 +65,7 @@ class Solution {
         
         // Now check which idx is first detected to be having wrong element
         
-        for(int idx = 0; idx < nums.length; idx++){
+        for(int idx = nums.length-1; idx >= 0; idx--){
             if( nums[idx] != idx )   return idx;     
         }
         

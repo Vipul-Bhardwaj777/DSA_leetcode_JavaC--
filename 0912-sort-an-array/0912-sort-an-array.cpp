@@ -14,11 +14,11 @@ public:
       
         { int mid=(l+h)/2;
             
-            if(l<h)
-            { mergesort(nums,l,mid);
+            if(l>=h) return; 
+             mergesort(nums,l,mid);
              mergesort(nums,mid+1,h);
              merge(nums,l,h,mid);
-             }
+             
          }
     
     
